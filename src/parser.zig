@@ -23,7 +23,7 @@ pub const Parser = struct {
             if (std.mem.startsWith(u8, line, "#")) continue;
             if (std.mem.eql(u8, line, "")) continue;
 
-            var split_iter = std.mem.split(u8, line, "=");
+            var split_iter = std.mem.splitScalar(u8, line, '=');
 
             var key = split_iter.next() orelse "";
             var value = split_iter.next() orelse "";
