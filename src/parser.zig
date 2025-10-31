@@ -21,11 +21,6 @@ pub const Parser = struct {
         var reader = self.file.reader(&buf);
 
         while (reader.interface.takeDelimiterExclusive('\n')) |line| {
-            std.log.warn(
-                \\line:
-                \\ {s}
-            , .{line});
-            // while (try reader.readUntilDelimiterOrEof(&buf, '\n')) |line| {
             // Skip comments (i.e. #)
             if (std.mem.startsWith(u8, line, "#")) continue;
             if (std.mem.eql(u8, line, "")) continue;
